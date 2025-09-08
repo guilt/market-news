@@ -247,11 +247,13 @@ class MarketWatch:
 def main():
     """Entry point"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Live Market Watch")
-    parser.add_argument("--country", "-c", help="Country code (e.g., US, IN, GB, DE, JP, CA)")
+    parser.add_argument(
+        "--country", "-c", help="Country code (e.g., US, IN, GB, DE, JP, CA)"
+    )
     args = parser.parse_args()
-    
+
     try:
         watch = MarketWatch(countryCode=args.country)
         watch.run()

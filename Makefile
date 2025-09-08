@@ -1,28 +1,28 @@
-.PHONY: format lint check test install-dev
+.PHONY: help format lint check test test-cov install-dev all
 
-# Install development dependencies
-install-dev:
+help: ## Print this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+install-dev: ## Install development dependencies
 	pip install -e ".[dev]"
 
-# Format code with black and isort
-format:
+format: ## Format code with black and isort
 	black market_news_generator/ tests/
 	isort market_news_generator/ tests/
 
-# Lint code with flake8
-lint:
+lint: ## Lint code with flake8
 	flake8 market_news_generator/ tests/
 
-# Check formatting without making changes
-check:
+check: ## Check formatting without making changes
 	black --check market_news_generator/ tests/
 	isort --check-only market_news_generator/ tests/
 	flake8 market_news_generator/ tests/
 
-# Run tests
-test:
-	python -m unittest discover tests/ -v
+test: ## Run tests
+	python -m pytest tests/ -v
 
-# Run all checks (format, lint, test)
-all: format lint test
+test-cov: ## Run tests with coverage
+	python -m pytest tests/ --cov=market_news_generator --cov-report=html
+
+all: format lint test ## Run all checks (format, lint, test)
 	@echo "✅ All checks passed!"
