@@ -22,10 +22,10 @@ from .market_data import NewsItem, StockData
 
 
 class MarketWatch:
-    def __init__(self):
+    def __init__(self, countryCode=None):
         self.console = Console()
         self.running = True
-        self.provider = EnhancedMarketDataProvider()
+        self.provider = EnhancedMarketDataProvider(countryCode=countryCode)
 
         # Setup signal handler
         signal.signal(signal.SIGINT, self._signalHandler)
@@ -246,8 +246,14 @@ class MarketWatch:
 
 def main():
     """Entry point"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Live Market Watch")
+    parser.add_argument("--country", "-c", help="Country code (e.g., US, IN, GB, DE, JP, CA)")
+    args = parser.parse_args()
+    
     try:
-        watch = MarketWatch()
+        watch = MarketWatch(countryCode=args.country)
         watch.run()
     except KeyboardInterrupt:
         print("\n👋 Goodbye!")

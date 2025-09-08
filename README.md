@@ -10,8 +10,13 @@ pip install market-news-generator
 ## Simple Example
 
 ```bash
-# Live market watch with country detection
+# Live market watch with auto-detection
 market
+
+# Live market watch for specific country
+market --country IN  # India
+market -c GB         # United Kingdom
+market -c JP         # Japan
 ```
 
 ```python
@@ -32,6 +37,7 @@ for stock in stocks:
 ## Features
 
 - Country Auto-Detection with Multi-Market Support
+- CLI Country Selection (US, IN, GB, DE, JP, CA)
 - Real-Time Dashboard with Rich Terminal Graphics
 - Smart BUY/SELL/HOLD Trading Recommendations
 - Market News Integration
