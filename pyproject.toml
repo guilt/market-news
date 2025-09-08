@@ -6,7 +6,10 @@ build-backend = "hatchling.build"
 name = "market-news-generator"
 version = "0.1.0"
 description = "Live market watch with country detection and real-time stock analysis"
-authors = [{name = "Market News Team", email = "contact@example.com"}]
+authors = [
+    {name = "Claude Sonnet 4", email = "claude@anthropic.com"},
+    {name = "Karthik Kumar Viswanathan", email = "me@karthikkumar.org"}
+]
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.7"
@@ -44,10 +47,10 @@ dev = [
 market = "market_news_generator.watch:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/market-news-generator"
-Repository = "https://github.com/yourusername/market-news-generator"
-Issues = "https://github.com/yourusername/market-news-generator/issues"
-Documentation = "https://github.com/yourusername/market-news-generator#readme"
+Homepage = "https://github.com/guilt/market-news"
+Repository = "https://github.com/guilt/market-news"
+Issues = "https://github.com/guilt/market-news/issues"
+Documentation = "https://github.com/guilt/market-news#readme"
 
 [tool.hatch.version]
 path = "market_news_generator/__init__.py"
